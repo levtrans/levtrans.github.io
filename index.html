@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="levtrans_logo2.jpg">
+<title>LEVTRANS – Professional Moving Company | Van Nuys, CA</title>
+<meta name="description" content="LEVTRANS is Van Nuys' trusted professional moving company. Local & long-distance moves, packing services, furniture assembly, commercial relocations. Call (818) 231-5367.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --mid: #1c2029;
+    --card: #181c24;
+    --gold: #f0a500;
+    --gold2: #ffc53d;
+    --white: #f5f5f0;
+    --gray: #8a9099;
+    --light: #e8e8e0;
+    --red: #e63434;
+    --green: #22c55e;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-cond: 'Barlow Condensed', sans-serif;
+    --radius: 4px;
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--black); color: var(--white); overflow-x: hidden; line-height: 1.6; }
+  img { max-width: 100%; height: auto!important; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+  .section-label {
+    font-family: var(--font-cond); font-size: 0.78rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); display: inline-block; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: 0.02em;
+  }
+  .section-title span { color: var(--gold); }
+  .section-desc { font-size: 1.05rem; color: var(--gray); max-width: 560px; margin-top: 1rem; font-weight: 300; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-cond); font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 2px solid transparent; cursor: pointer;
+    border-radius: var(--radius); transition: var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .btn::before {
+    content: ''; position: absolute; inset: 0;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--transition); z-index: 0;
+  }
+  .btn span { position: relative; z-index: 1; }
+  .btn:hover::before { transform: scaleX(1); }
+  .btn-gold { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .btn-gold::before { background: var(--gold2); }
+  .btn-gold:hover { color: var(--black); }
+  .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .btn-outline::before { background: rgba(255,255,255,0.08); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* noise */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 9999;
+  }
+
+  /* ── NAVBAR ── */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    padding: 1.5rem 0;
+  }
+  #navbar.scrolled {
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(240,165,0,0.2); padding: 0.9rem 0;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.08em; color: var(--white); }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+  .nav-links a {
+    font-family: var(--font-cond); font-size: 0.9rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(245,245,240,0.75); transition: color var(--transition); position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 1px; background: var(--gold); transform: scaleX(0); transition: transform var(--transition);
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta { margin-left: 1rem; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); transition: var(--transition); }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.98); z-index: 999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity var(--transition);
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a { font-family: var(--font-display); font-size: 3rem; letter-spacing: 0.05em; color: var(--white); transition: color var(--transition); }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+  .hero-swiper { position: absolute; inset: 0; z-index: 0; }
+  .hero-swiper .swiper-slide img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    filter: brightness(0.35); transform: scale(1.05); animation: kenburns 8s ease forwards;
+  }
+  @keyframes kenburns { to { transform: scale(1.0); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,10,10,0.7) 0%, transparent 60%),
+                linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; padding-top: 8rem; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(240,165,0,0.15); border: 1px solid rgba(240,165,0,0.4);
+    padding: 0.4rem 1rem; border-radius: 2px;
+    font-family: var(--font-cond); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem; animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero-h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 8rem); line-height: 0.95; letter-spacing: 0.02em; animation: fadeUp 0.8s 0.15s ease both; }
+  .hero-h1 .gold { color: var(--gold); }
+  .hero-sub { margin-top: 1.5rem; font-size: 1.1rem; color: rgba(245,245,240,0.7); font-weight: 300; max-width: 500px; animation: fadeUp 0.8s 0.3s ease both; }
+  .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.45s ease both; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 5rem; animation: fadeUp 0.8s 0.6s ease both; flex-wrap: wrap; }
+  .hero-stat-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--gold); line-height: 1; }
+  .hero-stat-label { font-family: var(--font-cond); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 0.2rem; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-family: var(--font-cond); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray);
+    animation: fadeUp 1s 1s ease both;
+  }
+  .hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 1.5s infinite; }
+  @keyframes scrollLine {
+    0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top}
+    51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom}
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── MARQUEE ── */
+  .marquee-bar { background: var(--gold); padding: 0.75rem 0; overflow: hidden; position: relative; }
+  .marquee-track { display: flex; gap: 4rem; animation: marquee 22s linear infinite; white-space: nowrap; width: max-content; }
+  .marquee-item {
+    font-family: var(--font-cond); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .marquee-item::after { content: '◆'; font-size: 0.5rem; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── SERVICES ── */
+  #services { padding: 8rem 0; background: var(--dark); position: relative; }
+  #services::before {
+    content: 'MOVING'; position: absolute; top: 3rem; right: -1rem;
+    font-family: var(--font-display); font-size: 12rem; color: rgba(255,255,255,0.02);
+    letter-spacing: 0.05em; pointer-events: none; user-select: none;
+  }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5px; margin-top: 4rem; background: rgba(255,255,255,0.06); }
+  .service-card {
+    background: var(--dark); padding: 3rem 2.5rem; position: relative; overflow: hidden;
+    cursor: default; transition: var(--transition);
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--mid); }
+  .service-icon {
+    width: 60px; height: 60px; background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.25);
+    border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.5rem; transition: var(--transition);
+  }
+  .service-card:hover .service-icon { background: var(--gold); color: var(--black); }
+  .service-title { font-family: var(--font-cond); font-size: 1.3rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+  .service-desc { font-size: 0.92rem; color: var(--gray); line-height: 1.7; }
+  .service-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; font-family: var(--font-cond); font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); transition: gap var(--transition); }
+  .service-link:hover { gap: 0.8rem; }
+
+  /* ── MOVE PROCESS ── */
+  #process { padding: 8rem 0; background: var(--black); }
+  .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 4rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 36px; left: 10%; right: 10%;
+    height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+    z-index: 0;
+  }
+  .process-step { text-align: center; position: relative; z-index: 1; }
+  .process-num {
+    width: 72px; height: 72px; background: var(--card); border: 2px solid var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.8rem; color: var(--gold);
+    margin: 0 auto 1.5rem; transition: var(--transition);
+  }
+  .process-step:hover .process-num { background: var(--gold); color: var(--black); }
+  .process-title { font-family: var(--font-cond); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .process-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── FLEET / TRUCKS ── */
+  #fleet { padding: 8rem 0; background: var(--dark); }
+  .fleet-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .product-swiper { overflow: hidden; }
+  .product-card {
+    background: var(--card); border-radius: 6px; overflow: hidden;
+    position: relative; transition: transform var(--transition), box-shadow var(--transition); cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .product-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.6s ease; }
+  .product-card:hover .product-img { transform: scale(1.05); }
+  .product-badge {
+    position: absolute; top: 1rem; left: 1rem; background: var(--gold); color: var(--black);
+    font-family: var(--font-cond); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 2px;
+  }
+  .product-body { padding: 1.5rem; }
+  .product-cat { font-family: var(--font-cond); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .product-name { font-family: var(--font-cond); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .product-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.07); }
+  .product-rating { color: var(--gold); font-size: 0.85rem; }
+  .product-btn { font-family: var(--font-cond); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.35rem 0.9rem; border-radius: 2px; transition: var(--transition); }
+  .product-btn:hover { background: var(--gold); color: var(--black); }
+
+  /* ── ABOUT ── */
+  #about { padding: 8rem 0; background: var(--black); position: relative; overflow: hidden; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 1rem; }
+  .about-img-stack { position: relative; height: 550px; }
+  .about-img-main { position: absolute; top: 0; left: 0; width: 75%; height: 420px; object-fit: cover; border-radius: 6px; }
+  .about-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 280px; object-fit: cover; border-radius: 6px; border: 4px solid var(--black); }
+  .about-badge {
+    position: absolute; top: 50%; left: 60%; transform: translate(-50%,-50%);
+    background: var(--gold); color: var(--black); border-radius: 50%;
+    width: 110px; height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; z-index: 2; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .about-badge-num { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; }
+  .about-badge-text { font-family: var(--font-cond); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .about-feature { display: flex; gap: 1rem; align-items: flex-start; }
+  .about-feature-icon { width: 40px; height: 40px; background: rgba(240,165,0,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; color: var(--gold); }
+  .about-feature-title { font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .about-feature-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { padding: 8rem 0; background: var(--dark); position: relative; overflow: hidden; }
+  #testimonials::before {
+    content: '"'; position: absolute; top: 2rem; left: 4rem;
+    font-family: var(--font-display); font-size: 30rem; color: rgba(240,165,0,0.03);
+    line-height: 1; pointer-events: none;
+  }
+  .testimonial-swiper { overflow: hidden; padding-bottom: 3rem !important; }
+  .testimonial-card { background: var(--card); border-radius: 6px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+  .testimonial-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+  .testi-text { font-size: 1rem; color: rgba(245,245,240,0.8); line-height: 1.75; font-weight: 300; font-style: italic; margin-bottom: 1.5rem; }
+  .testi-author { display: flex; align-items: center; gap: 1rem; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .testi-name { font-family: var(--font-cond); font-size: 1rem; font-weight: 700; }
+  .testi-role { font-size: 0.8rem; color: var(--gray); }
+  .social-proof { margin-top: 5rem; text-align: center; }
+  .social-logos { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .social-logo { display: flex; align-items: center; gap: 0.5rem; color: var(--gray); font-family: var(--font-cond); font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; transition: color var(--transition); padding: 0.8rem 1.5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; }
+  .social-logo:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── HIRING ── */
+  #hiring { padding: 8rem 0; background: var(--mid); position: relative; overflow: hidden; }
+  #hiring::before {
+    content: 'JOIN US'; position: absolute; top: 2rem; right: -2rem;
+    font-family: var(--font-display); font-size: 10rem; color: rgba(240,165,0,0.04);
+    letter-spacing: 0.05em; pointer-events: none; user-select: none;
+  }
+  .hiring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .hiring-img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; border: 2px solid rgba(240,165,0,0.2); }
+  .hiring-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2.5rem 0; }
+  .hiring-perk {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    background: rgba(240,165,0,0.06); border: 1px solid rgba(240,165,0,0.12);
+    padding: 1.2rem; border-radius: 6px; transition: var(--transition);
+  }
+  .hiring-perk:hover { border-color: rgba(240,165,0,0.4); background: rgba(240,165,0,0.1); }
+  .hiring-perk-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .hiring-perk-title { font-family: var(--font-cond); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .hiring-perk-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+  .positions-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .position-card {
+    background: var(--card); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px; padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; transition: var(--transition);
+  }
+  .position-card:hover { border-color: var(--gold); transform: translateX(6px); }
+  .position-info {}
+  .position-title { font-family: var(--font-cond); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .position-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .position-tag {
+    font-family: var(--font-cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 20px;
+    border: 1px solid rgba(240,165,0,0.3); color: var(--gold);
+  }
+  .position-tag.full { border-color: rgba(34,197,94,0.4); color: var(--green); }
+  .position-tag.part { border-color: rgba(240,165,0,0.4); color: var(--gold); }
+  .hiring-form { background: var(--card); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 2.5rem; margin-top: 4rem; }
+  .hiring-form-title { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem; }
+  .hiring-form-sub { font-size: 0.9rem; color: var(--gray); margin-bottom: 2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .form-label { font-family: var(--font-cond); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+  .form-input, .form-select {
+    background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 0.8rem 1rem;
+    color: var(--white); font-family: var(--font-body); font-size: 0.95rem;
+    transition: border-color var(--transition); width: 100%;
+  }
+  .form-input:focus, .form-select:focus { outline: none; border-color: var(--gold); }
+  .form-select option { background: var(--dark); }
+  textarea.form-input { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── FAQ ── */
+  #faq { padding: 8rem 0; background: var(--black); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
+  .faq-category-title {
+    font-family: var(--font-cond); font-size: 1rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 0.5rem; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: color var(--transition); user-select: none; }
+  .faq-question:hover { color: var(--gold); }
+  .faq-icon { width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; transition: var(--transition); }
+  .faq-item.open .faq-icon { background: var(--gold); border-color: var(--gold); color: var(--black); transform: rotate(45deg); }
+  .faq-answer { max-height: 0; overflow: hidden; font-size: 0.9rem; color: var(--gray); line-height: 1.7; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0; }
+  .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 1.1rem; }
+
+  /* ── CONTACT ── */
+  #contact { padding: 8rem 0; background: var(--dark); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; margin-top: 4rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 0; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .contact-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .contact-label { font-family: var(--font-cond); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .contact-val { font-weight: 600; font-size: 1rem; }
+  .contact-sub { font-size: 0.85rem; color: var(--gray); margin-top: 0.15rem; }
+  .contact-form { background: var(--card); border-radius: 8px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.07); }
+  .contact-form-title { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .contact-form-sub { font-size: 0.9rem; color: var(--gray); margin-bottom: 2rem; }
+
+  /* ── PRIVACY / FOOTER ── */
+  #privacy-bar { background: var(--mid); padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .privacy-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .privacy-text { font-size: 0.85rem; color: var(--gray); max-width: 700px; }
+  .privacy-links { display: flex; gap: 1.5rem; }
+  .privacy-links a { font-family: var(--font-cond); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); transition: color var(--transition); }
+  .privacy-links a:hover { color: var(--gold); }
+
+  footer { background: var(--black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+  .footer-socials { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+  .footer-social { width: 38px; height: 38px; background: rgba(255,255,255,0.06); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: var(--transition); color: var(--gray); }
+  .footer-social:hover { background: var(--gold); color: var(--black); }
+  .footer-col h4 { font-family: var(--font-cond); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a { font-size: 0.88rem; color: var(--gray); transition: color var(--transition); }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 0.75rem; }
+  .footer-copy { font-size: 0.83rem; color: var(--gray); }
+  .footer-copy span { color: var(--gold); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SWIPER ── */
+  .swiper-pagination-bullet { background: var(--gray) !important; }
+  .swiper-pagination-bullet-active { background: var(--gold) !important; }
+  .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; background: rgba(10,10,10,0.6); width: 44px !important; height: 44px !important; border-radius: 50%; backdrop-filter: blur(4px); }
+  .swiper-button-next::after, .swiper-button-prev::after { font-size: 1rem !important; }
+
+  /* ── BACK TOP ── */
+  #back-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--gold); color: var(--black); border: none; border-radius: 4px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(20px); transition: var(--transition); z-index: 500; }
+  #back-top.show { opacity: 1; transform: translateY(0); }
+  #back-top:hover { background: var(--gold2); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1024px) {
+    .about-grid, .contact-grid, .faq-grid, .hiring-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .about-img-stack { height: 350px; }
+    .about-img-main { height: 280px; } .about-img-accent { height: 200px; }
+    .process-steps { grid-template-columns: repeat(2,1fr); }
+    .process-steps::before { display: none; }
+  }
+  @media(max-width:768px) {
+    .nav-links,.nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-features,.hiring-perks { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">LEV<span>TRANS</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#fleet">Our Fleet</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#hiring">We're Hiring</a></li>
+      <li><a href="#faq">Support</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-gold nav-cta"><span>Get a Quote</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#fleet" class="mob-link">Our Fleet</a>
+  <a href="#about" class="mob-link">About Us</a>
+  <a href="#hiring" class="mob-link">We're Hiring</a>
+  <a href="#faq" class="mob-link">Support</a>
+  <a href="#contact" class="mob-link">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Professional movers loading truck" loading="eager">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80&auto=format&fit=crop" alt="Moving boxes and furniture" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/7464218/pexels-photo-7464218.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Movers carrying furniture" loading="lazy">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1555685812-4b8f286abb1c?w=1600&q=80&auto=format&fit=crop" alt="Moving truck on open road" loading="lazy">
+      </div>
+ 
+         <div class="swiper-slide">
+        <img src="9.jpg" alt="Moving truck on open road" loading="lazy">
+      </div>
+         <div class="swiper-slide">
+        <img src="7.jpg" alt="Moving truck on open road" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">🚛 Van Nuys' Trusted Moving Company</div>
+    <h1 class="hero-h1">YOUR MOVE.<br>OUR<br><span class="gold">MISSION.</span></h1>
+    <p class="hero-sub">Professional local & long-distance moving services. Licensed, insured, and built on a decade of trusted moves across greater Los Angeles.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-gold"><span>Get a Free Quote</span> <span>→</span></a>
+      <a href="#services" class="btn btn-outline"><span>Our Services</span></a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">2,000+</div><div class="hero-stat-label">Moves Completed</div></div>
+      <div><div class="hero-stat-num">12+</div><div class="hero-stat-label">Years of Experience</div></div>
+      <div><div class="hero-stat-num">4.9★</div><div class="hero-stat-label">Customer Rating</div></div>
+      <div><div class="hero-stat-num">24/7</div><div class="hero-stat-label">Support Available</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>scroll</div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Local Moves</span>
+    <span class="marquee-item">Long Distance</span>
+    <span class="marquee-item">Residential Moving</span>
+    <span class="marquee-item">Commercial Moving</span>
+    <span class="marquee-item">Packing Services</span>
+    <span class="marquee-item">Furniture Assembly</span>
+    <span class="marquee-item">Piano Moving</span>
+    <span class="marquee-item">Storage Solutions</span>
+    <span class="marquee-item">Same-Day Moves</span>
+    <span class="marquee-item">Licensed & Insured</span>
+    <span class="marquee-item">Van Nuys CA</span>
+    <span class="marquee-item">Los Angeles Area</span>
+    <span class="marquee-item">Local Moves</span>
+    <span class="marquee-item">Long Distance</span>
+    <span class="marquee-item">Residential Moving</span>
+    <span class="marquee-item">Commercial Moving</span>
+    <span class="marquee-item">Packing Services</span>
+    <span class="marquee-item">Furniture Assembly</span>
+    <span class="marquee-item">Piano Moving</span>
+    <span class="marquee-item">Storage Solutions</span>
+    <span class="marquee-item">Same-Day Moves</span>
+    <span class="marquee-item">Licensed & Insured</span>
+    <span class="marquee-item">Van Nuys CA</span>
+    <span class="marquee-item">Los Angeles Area</span>
+  </div>
+</div>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <span class="section-label reveal">What We Offer</span>
+    <h2 class="section-title reveal">COMPLETE <span>MOVING</span><br>SOLUTIONS</h2>
+    <p class="section-desc reveal">From packing your first box to placing the last piece of furniture — LEVTRANS handles every detail of your move with care, speed, and professionalism.</p>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <div class="service-title">Residential Moving</div>
+        <p class="service-desc">Apartments, condos, houses — we move it all. Our experienced crew treats your belongings with the care they deserve, every single time.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <div class="service-title">Commercial Moving</div>
+        <p class="service-desc">Office relocations, retail moves, and business transitions — completed efficiently to minimize downtime and keep your business running.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <div class="service-title">Packing Services</div>
+        <p class="service-desc">Professional packing with quality materials. Fragile items, artwork, electronics — expertly packed so everything arrives safe and intact.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚛</div>
+        <div class="service-title">Long-Distance Moving</div>
+        <p class="service-desc">Moving out of state or across California? Our long-haul team provides reliable, on-time delivery with full tracking and communication.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎹</div>
+        <div class="service-title">Specialty Item Moving</div>
+        <p class="service-desc">Pianos, pool tables, safes, antiques, and oversized items moved with specialized equipment and trained handlers. No job too complex.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏪</div>
+        <div class="service-title">Storage Solutions</div>
+        <p class="service-desc">Need temporary storage during your move? We coordinate secure storage options to bridge gaps in your moving timeline seamlessly.</p>
+        <a href="#contact" class="service-link">Get a Quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="process">
+  <div class="container">
+    <span class="section-label reveal">Simple Process</span>
+    <h2 class="section-title reveal">YOUR MOVE<br>IN <span>4 STEPS</span></h2>
+    <p class="section-desc reveal">We make moving stress-free. Here's how a LEVTRANS move comes together from your first call to the last box unpacked.</p>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <div class="process-title">Free Quote</div>
+        <p class="process-desc">Call us or fill out our online form. We'll give you a clear, upfront quote — no hidden fees, no surprises.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <div class="process-title">Plan Your Move</div>
+        <p class="process-desc">We schedule your move date, confirm inventory, and assign a dedicated crew to your job. You stay in the loop.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <div class="process-title">Moving Day</div>
+        <p class="process-desc">Our crew arrives on time, fully equipped, and gets to work — packing, loading, and protecting everything with care.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <div class="process-title">Settled & Done</div>
+        <p class="process-desc">We unload, place furniture to your direction, and leave the space clean. You're home — we did the heavy lifting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FLEET ── -->
+<section id="fleet">
+  <div class="container">
+    <div class="fleet-header">
+      <div>
+        <span class="section-label reveal">Our Fleet</span>
+        <h2 class="section-title reveal">THE RIGHT TRUCK<br>FOR <span>EVERY MOVE</span></h2>
+      </div>
+      <a href="#contact" class="btn btn-outline reveal"><span>Book Your Move →</span></a>
+    </div>
+    <div class="swiper product-swiper reveal">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div style="overflow:hidden;height:220px">
+              <img class="product-img" src="5.jpg" alt="Cargo Van">
+            </div>
+            <div class="product-badge">Popular</div>
+            <div class="product-body">
+              <div class="product-cat">Small Moves</div>
+              <div class="product-name">Cargo Van</div>
+              <p class="product-desc">Ideal for studio and 1-bedroom apartment moves. Efficient, agile, and easy to park in tight spaces.</p>
+              <div class="product-footer">
+                <div class="product-rating">★★★★★ Studio / 1BR</div>
+                <a href="#contact" class="product-btn">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div style="overflow:hidden;height:220px">
+              <img class="product-img" src="13.jpg" alt="14ft Moving Truck">
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Medium Moves</div>
+              <div class="product-name">14 ft Moving Truck</div>
+              <p class="product-desc">Great for 1–2 bedroom moves. Includes loading ramp and tie-down rails. No CDL required.</p>
+              <div class="product-footer">
+                <div class="product-rating">★★★★★ 1–2 Bedrooms</div>
+                <a href="#contact" class="product-btn">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div style="overflow:hidden;height:220px">
+              <img class="product-img" src="2.webp" alt="20ft Moving Truck">
+            </div>
+            <div class="product-badge">Best Choice</div>
+            <div class="product-body">
+              <div class="product-cat">Large Moves</div>
+              <div class="product-name">20 ft Moving Truck</div>
+              <p class="product-desc">Handle a full 2–3 bedroom house in one trip. Air-ride suspension to protect your furniture.</p>
+              <div class="product-footer">
+                <div class="product-rating">★★★★★ 2–3 Bedrooms</div>
+                <a href="#contact" class="product-btn">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div style="overflow:hidden;height:220px">
+              <img class="product-img" src="1.jpg" alt="26ft Moving Truck">
+            </div>
+            <div class="product-badge">Heavy Duty</div>
+            <div class="product-body">
+              <div class="product-cat">Full-Home & Commercial</div>
+              <div class="product-name">26 ft Moving Truck</div>
+              <p class="product-desc">Our largest truck — handles 4+ bedrooms, large homes, and full office relocations in a single load.</p>
+              <div class="product-footer">
+                <div class="product-rating">★★★★★ 4+ Bedrooms</div>
+                <a href="#contact" class="product-btn">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div style="overflow:hidden;height:220px">
+              <img class="product-img" src="11.jpg" alt="Packing supplies">
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Add-On Service</div>
+              <div class="product-name">Full Packing Kit</div>
+              <p class="product-desc">Boxes, packing tape, bubble wrap, furniture blankets, and straps — everything your move needs, ready to go.</p>
+              <div class="product-footer">
+                <div class="product-rating">★★★★★ Premium Pack</div>
+                <a href="#contact" class="product-btn">Add On</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination" style="bottom:-5px"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-stack reveal">
+        <img class="about-img-main" src="https://images.pexels.com/photos/7464218/pexels-photo-7464218.jpeg?auto=compress&cs=tinysrgb&w=700" alt="LEVTRANS moving crew at work" loading="lazy">
+        <img class="about-img-accent" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80&auto=format&fit=crop" alt="Packed moving boxes" loading="lazy">
+        <div class="about-badge">
+          <div class="about-badge-num">12+</div>
+          <div class="about-badge-text">Years<br>Serving LA</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="section-label">About LEVTRANS</span>
+        <h2 class="section-title">THE MOVERS<br><span>YOU CAN TRUST</span></h2>
+        <p class="section-desc">Founded right here in the San Fernando Valley, LEVTRANS has been making LA-area moves smooth, safe, and stress-free for over a decade. We treat every move like it's our own family moving — because to us, it is.</p>
+        <p style="color:var(--gray);font-size:0.95rem;margin-top:1rem;line-height:1.8">From small studio moves to full commercial relocations, our licensed and insured team brings professionalism, muscle, and genuine care to every job. We're not a franchise or call center — we're a real local crew you can talk to.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🛡️</div>
+            <div>
+              <div class="about-feature-title">Fully Licensed & Insured</div>
+              <div class="about-feature-desc">CALPUC licensed moving company. Your belongings are fully protected.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">⏱️</div>
+            <div>
+              <div class="about-feature-title">Always On Time</div>
+              <div class="about-feature-desc">We respect your schedule. On-time arrival is our standard, not a promise.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">💰</div>
+            <div>
+              <div class="about-feature-title">Transparent Pricing</div>
+              <div class="about-feature-desc">No hidden fees. Flat-rate and hourly options with full upfront quotes.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🤝</div>
+            <div>
+              <div class="about-feature-title">Local Family Business</div>
+              <div class="about-feature-desc">Rooted in Van Nuys, serving all of greater Los Angeles with pride.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem">
+          <a href="#contact" class="btn btn-gold"><span>Schedule Your Move</span> <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <span class="section-label reveal">Reviews</span>
+    <h2 class="section-title reveal">WHAT OUR<br><span>CUSTOMERS SAY</span></h2>
+    <div class="swiper testimonial-swiper" style="margin-top:3rem">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"LEVTRANS moved our entire 3-bedroom house in one day. The crew was fast, careful with everything, and even helped reassemble our furniture. Best moving company we've ever used — hands down!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">👤</div>
+              <div><div class="testi-name">Maria G.</div><div class="testi-role">Sherman Oaks → Northridge</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"I was stressed about my office move but LEVTRANS made it completely painless. They packed everything, moved our computers and equipment without a scratch, and had us set up in the new space by afternoon."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">👤</div>
+              <div><div class="testi-name">David K.</div><div class="testi-role">Commercial Move · Burbank</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"These guys moved my piano and I was nervous the whole time — until I saw how carefully they handled it. Wrapped it perfectly, got it through a narrow door, and it didn't lose a single key's tuning. Incredible."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">👤</div>
+              <div><div class="testi-name">Sandra L.</div><div class="testi-role">Piano Move · Los Angeles</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Fair pricing, punctual, friendly crew. No damage to any of my belongings. They helped me out with same-day availability when my original movers canceled. Saved my move completely. Will use LEVTRANS every time."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">👤</div>
+              <div><div class="testi-name">James T.</div><div class="testi-role">Same-Day Move · Van Nuys</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Long-distance move from LA to Sacramento — I was worried, but LEVTRANS kept me updated the entire way. Everything arrived on time and in perfect condition. Couldn't have asked for a smoother experience."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">👤</div>
+              <div><div class="testi-name">Priya M.</div><div class="testi-role">Long-Distance · LA to Sacramento</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="social-proof reveal">
+      <div style="font-family:var(--font-cond);font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray)">Find Us & Review Us On</div>
+      <div class="social-logos">
+        <a href="https://www.instagram.com/levtrans_/" class="social-logo">📸 Instagram</a>
+        <a href="#" class="social-logo">👥 Facebook</a>
+        <a href="#" class="social-logo">⭐ Yelp</a>
+        <a href="#" class="social-logo">🗺️ Google</a>
+        <a href="#" class="social-logo">🏠 Nextdoor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WE ARE HIRING ── -->
+<section id="hiring">
+  <div class="container">
+    <span class="section-label reveal">Careers</span>
+    <h2 class="section-title reveal">WE ARE<br><span>HIRING!</span></h2>
+    <p class="section-desc reveal">Join the LEVTRANS family. We're looking for hard-working, reliable people who take pride in their work and want to grow with a company that values them.</p>
+
+    <div class="hiring-grid" style="margin-top:4rem">
+      <div class="reveal">
+        <img class="hiring-img" src="6.png" alt="LEVTRANS team at work" loading="lazy">
+        <div style="margin-top:2rem">
+          <p style="font-size:1rem;color:var(--gray);line-height:1.8">At LEVTRANS, our crew is our most valuable asset. We offer competitive pay, a supportive team environment, and the satisfaction of doing meaningful work every day. Whether you're just starting out or a seasoned mover, we want to hear from you.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:var(--font-cond);font-size:1.1rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">Why Work With Us</h3>
+        <div class="hiring-perks">
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">💵</div>
+            <div>
+              <div class="hiring-perk-title">Competitive Pay</div>
+              <div class="hiring-perk-desc">Above-market hourly wages with tips and performance bonuses.</div>
+            </div>
+          </div>
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">📅</div>
+            <div>
+              <div class="hiring-perk-title">Flexible Schedule</div>
+              <div class="hiring-perk-desc">Full-time and part-time shifts available. We work around your life.</div>
+            </div>
+          </div>
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">📈</div>
+            <div>
+              <div class="hiring-perk-title">Room to Grow</div>
+              <div class="hiring-perk-desc">Crew lead and supervisor opportunities for motivated workers.</div>
+            </div>
+          </div>
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">🤝</div>
+            <div>
+              <div class="hiring-perk-title">Team Culture</div>
+              <div class="hiring-perk-desc">We're a family business. We treat every crew member with respect.</div>
+            </div>
+          </div>
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">🚛</div>
+            <div>
+              <div class="hiring-perk-title">Paid Training</div>
+              <div class="hiring-perk-desc">No experience? No problem. We train and pay you from day one.</div>
+            </div>
+          </div>
+          <div class="hiring-perk">
+            <div class="hiring-perk-icon">🏥</div>
+            <div>
+              <div class="hiring-perk-title">Benefits</div>
+              <div class="hiring-perk-desc">Health benefits available for qualifying full-time team members.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-cond);font-size:1.1rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;margin-top:2rem">Open Positions</h3>
+        <div class="positions-list">
+          <div class="position-card">
+            <div class="position-info">
+              <div class="position-title">Moving Crew Member</div>
+              <div class="position-meta">
+                <span class="position-tag full">Full-Time</span>
+                <span class="position-tag part">Part-Time</span>
+                <span class="position-tag" style="border-color:rgba(255,255,255,0.2);color:var(--gray)">Van Nuys, CA</span>
+              </div>
+            </div>
+            <a href="#apply" class="btn btn-gold" style="padding:0.5rem 1.2rem;font-size:0.8rem"><span>Apply</span></a>
+          </div>
+          <div class="position-card">
+            <div class="position-info">
+              <div class="position-title">CDL Truck Driver</div>
+              <div class="position-meta">
+                <span class="position-tag full">Full-Time</span>
+                <span class="position-tag" style="border-color:rgba(255,255,255,0.2);color:var(--gray)">CDL Required</span>
+                <span class="position-tag" style="border-color:rgba(255,255,255,0.2);color:var(--gray)">Van Nuys, CA</span>
+              </div>
+            </div>
+            <a href="#apply" class="btn btn-gold" style="padding:0.5rem 1.2rem;font-size:0.8rem"><span>Apply</span></a>
+          </div>
+          <div class="position-card">
+            <div class="position-info">
+              <div class="position-title">Packing Specialist</div>
+              <div class="position-meta">
+                <span class="position-tag full">Full-Time</span>
+                <span class="position-tag part">Part-Time</span>
+                <span class="position-tag" style="border-color:rgba(255,255,255,0.2);color:var(--gray)">Van Nuys, CA</span>
+              </div>
+            </div>
+            <a href="#apply" class="btn btn-gold" style="padding:0.5rem 1.2rem;font-size:0.8rem"><span>Apply</span></a>
+          </div>
+          <div class="position-card">
+            <div class="position-info">
+              <div class="position-title">Move Coordinator (Office)</div>
+              <div class="position-meta">
+                <span class="position-tag full">Full-Time</span>
+                <span class="position-tag" style="border-color:rgba(255,255,255,0.2);color:var(--gray)">Customer-Facing</span>
+              </div>
+            </div>
+            <a href="#apply" class="btn btn-gold" style="padding:0.5rem 1.2rem;font-size:0.8rem"><span>Apply</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLICATION FORM -->
+    <div class="hiring-form reveal" id="apply" style="margin-top:5rem">
+      <div class="hiring-form-title">APPLY NOW</div>
+      <div class="hiring-form-sub">Fill out the form below and we'll be in touch within 1–2 business days. We look forward to meeting you!</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name *</label>
+          <input type="text" class="form-input" placeholder="Your first name" id="hFirst">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name *</label>
+          <input type="text" class="form-input" placeholder="Your last name" id="hLast">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Phone *</label>
+          <input type="tel" class="form-input" placeholder="(818) 000-0000" id="hPhone">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com" id="hEmail">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Position Applying For *</label>
+          <select class="form-select" id="hPosition">
+            <option value="">Select a position…</option>
+            <option>Moving Crew Member</option>
+            <option>CDL Truck Driver</option>
+            <option>Packing Specialist</option>
+            <option>Move Coordinator (Office)</option>
+            <option>Other / General Interest</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Availability</label>
+          <select class="form-select" id="hAvail">
+            <option>Full-Time</option>
+            <option>Part-Time</option>
+            <option>Weekends Only</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Relevant Experience</label>
+        <textarea class="form-input" placeholder="Tell us about any moving, driving, or related experience. No experience required for some positions — we train!" id="hExp"></textarea>
+      </div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;padding:1rem;font-size:1rem" onclick="handleApply()"><span>Submit Application</span> <span>→</span></button>
+      <p id="apply-success" style="display:none;text-align:center;color:var(--green);margin-top:1rem;font-family:var(--font-cond);letter-spacing:.1em;font-size:1rem">✓ Application received! We'll call you within 1–2 business days.</p>
+      <p style="text-align:center;color:var(--gray);font-size:0.82rem;margin-top:1rem">Or call us directly: <a href="tel:8182315367" style="color:var(--gold)">(818) 231-5367</a> and ask about open positions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label reveal">Support</span>
+    <h2 class="section-title reveal">FREQUENTLY<br><span>ASKED</span> QUESTIONS</h2>
+    <div class="faq-grid reveal">
+      <div>
+        <div class="faq-category-title">🚛 Moving Questions</div>
+        <div class="faq-item">
+          <div class="faq-question">How far in advance should I book my move? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">We recommend booking at least 1–2 weeks in advance, especially on weekends and end-of-month dates which fill up fast. That said, we often accommodate same-day and next-day moves when availability allows — just call us!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do you charge by the hour or offer flat rates? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">We offer both hourly and flat-rate pricing depending on your move size and destination. Hourly moves have a 2-hour minimum. Flat rates work great for long-distance and larger moves. We'll recommend the best option for your situation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What areas do you serve? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">We serve all of greater Los Angeles — Van Nuys, Burbank, Glendale, Sherman Oaks, Encino, Northridge, Santa Monica, Pasadena, Long Beach, and beyond. We also do long-distance moves throughout California and across the US.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are you licensed and insured? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Yes. LEVTRANS is fully licensed by the California Public Utilities Commission (CALPUC) and carries full liability and cargo insurance. Your belongings are protected from the moment we pick them up to the moment we set them down.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What if something is damaged during the move? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">While damage is rare, we take full responsibility for any item damaged due to our crew's handling. We carry insurance and have a straightforward claims process. We'll make it right — that's our guarantee.</div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-category-title">📦 Packing & Services</div>
+        <div class="faq-item">
+          <div class="faq-question">Do you provide packing materials? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Yes! We provide all packing materials including boxes in various sizes, packing tape, bubble wrap, packing paper, and furniture blankets. Materials can be included in your quote or available as an add-on. We've got everything you need.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can you move specialty items like pianos or safes? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Absolutely. Our crew is trained and equipped to handle pianos, pool tables, gun safes, large appliances, antiques, and other specialty items. We use proper dollies, straps, and protective materials for every specialty piece.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do you offer storage if my new place isn't ready? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Yes. We can coordinate secure, climate-controlled storage solutions to hold your belongings for days, weeks, or months until you're ready for delivery. Ask us about storage options when you get your quote.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Will you disassemble and reassemble furniture? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Yes — basic furniture disassembly and reassembly is included with most moves at no extra charge. Beds, bed frames, desks, and similar pieces are no problem. Complex items like modular shelving may incur a small additional fee.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What is your cancellation policy? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Cancellations made 48+ hours before the move date receive a full refund of any deposit. Cancellations within 24 hours may forfeit a one-hour fee. Life happens — call us and we'll always try to work something out that's fair for everyone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label reveal">Get In Touch</span>
+    <h2 class="section-title reveal">LET'S GET<br>YOU <span>MOVING</span></h2>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Our Location</div>
+            <div class="contact-val">6730 Gerald Ave</div>
+            <div class="contact-sub">Van Nuys, CA 91406</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val"><a href="tel:8182315367" style="color:inherit">(818) 231-5367</a></div>
+            <div class="contact-sub">Mon–Sat 7am–8pm · Sun 8am–5pm</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:levtrans@yahoo.com" style="color:inherit">levtrans@yahoo.com</a></div>
+            <div class="contact-sub">We respond within 2 business hours</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Business Hours</div>
+            <div class="contact-val">Mon–Sat: 7:00 AM – 8:00 PM</div>
+            <div class="contact-sub">Sunday: 8:00 AM – 5:00 PM</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <img src="7.jpg" alt="Van Nuys CA neighborhood" style="border-radius:8px;width:100%;height:180px;object-fit:cover;border:1px solid rgba(255,255,255,0.08)">
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="contact-form-title">Get a Free Quote</div>
+        <div class="contact-form-sub">Tell us about your move and we'll get back to you with a quote, fast.</div>
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Your full name" id="cName">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="your@email.com" id="cEmail">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-input" placeholder="(818) 000-0000" id="cPhone">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Move Type</label>
+            <select class="form-select" id="cService">
+              <option>Local Residential Move</option>
+              <option>Long-Distance Move</option>
+              <option>Commercial / Office Move</option>
+              <option>Packing Services Only</option>
+              <option>Specialty Item Moving</option>
+              <option>Storage Assistance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Home Size</label>
+            <select class="form-select" id="cSize">
+              <option>Studio / 1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4+ Bedrooms</option>
+              <option>Office / Commercial</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Moving From → To & Preferred Date</label>
+          <textarea class="form-input" id="cMsg" placeholder="E.g., Moving from Van Nuys to Burbank around June 15th. 2-bedroom apartment, need help packing fragile items…"></textarea>
+        </div>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;padding:1rem" onclick="handleContact()"><span>Send My Quote Request</span> <span>→</span></button>
+        <p id="form-success" style="display:none;text-align:center;color:var(--green);margin-top:1rem;font-family:var(--font-cond);letter-spacing:.1em">✓ Message received! We'll call you within 2 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRIVACY BAR ── -->
+<div id="privacy-bar">
+  <div class="container privacy-inner">
+    <div class="privacy-text">🔒 <strong>Your privacy matters.</strong> LEVTRANS collects only the information necessary to process your moving inquiry. We do not sell, share, or trade your personal data with third parties. All communications are handled securely and confidentially. By using our website, you agree to our Privacy Policy.</div>
+    <div class="privacy-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:2rem">LEV<span>TRANS</span></div>
+        <p>Van Nuys' trusted professional moving company. Serving all of greater Los Angeles with licensed, insured, and reliable moving services since 2012.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/levtrans_/" class="footer-social" title="Instagram">📸</a>
+          <a href="#" class="footer-social" title="Facebook">👥</a>
+          <a href="#" class="footer-social" title="Yelp">⭐</a>
+          <a href="#" class="footer-social" title="Google">🗺️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Residential Moving</a></li>
+          <li><a href="#services">Commercial Moving</a></li>
+          <li><a href="#services">Long-Distance Moves</a></li>
+          <li><a href="#services">Packing Services</a></li>
+          <li><a href="#services">Specialty Moving</a></li>
+          <li><a href="#services">Storage Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#fleet">Our Fleet</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#hiring">We're Hiring</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8182315367">(818) 231-5367</a></li>
+          <li><a href="mailto:levtrans@yahoo.com">levtrans@yahoo.com</a></li>
+          <li><a href="#contact">6730 Gerald Ave</a></li>
+          <li><a href="#contact">Van Nuys, CA 91406</a></li>
+          <li><a href="#hiring">Join Our Team</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span>LEVTRANS</span> Moving Company. All rights reserved. · 6730 Gerald Ave, Van Nuys CA 91406 · <a href="tel:8182315367" style="color:var(--gray)">(818) 231-5367</a></div>
+      <div class="privacy-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// ─── SWIPERS ───
+new Swiper('.hero-swiper', {
+  loop: true, autoplay: { delay: 5000, disableOnInteraction: false },
+  effect: 'fade', fadeEffect: { crossFade: true }, speed: 1200, allowTouchMove: false
+});
+
+new Swiper('.product-swiper', {
+  slidesPerView: 1.15, spaceBetween: 20, loop: true,
+  navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  pagination: { el: '.swiper-pagination', clickable: true },
+  breakpoints: { 600: { slidesPerView: 2.1 }, 900: { slidesPerView: 3 }, 1200: { slidesPerView: 3.5 } }
+});
+
+new Swiper('.testimonial-swiper', {
+  slidesPerView: 1, spaceBetween: 24, loop: true,
+  autoplay: { delay: 4500, disableOnInteraction: false },
+  pagination: { el: '.swiper-pagination', clickable: true },
+  breakpoints: { 700: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }
+});
+
+// ─── NAVBAR ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+});
+
+// ─── HAMBURGER ───
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+}));
+
+// ─── FAQ ───
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ─── FORM HANDLERS ───
+function handleContact() {
+  const name = document.getElementById('cName').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  document.getElementById('form-success').style.display = 'block';
+  ['cName','cEmail','cPhone','cMsg'].forEach(id => document.getElementById(id).value = '');
+}
+
+function handleApply() {
+  const first = document.getElementById('hFirst').value.trim();
+  const phone = document.getElementById('hPhone').value.trim();
+  const pos = document.getElementById('hPosition').value;
+  if (!first || !phone || !pos) { alert('Please fill in your name, phone, and the position you\'re applying for.'); return; }
+  document.getElementById('apply-success').style.display = 'block';
+  ['hFirst','hLast','hPhone','hEmail','hExp'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('hPosition').value = '';
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
